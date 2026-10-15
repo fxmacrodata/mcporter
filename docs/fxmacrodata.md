@@ -6,7 +6,7 @@ read_when:
 
 # FXMacroData macro data
 
-[FXMacroData](https://fxmacrodata.com/documentation/mcp-server) serves central-bank and statistics-agency data (policy rates, inflation, payrolls, GDP, bond yields and release calendars) over Streamable HTTP. USD tools work without an API key; on the keyless tier a new USD release becomes readable 15 minutes after it is published. Other currencies return a `subscription_required` result until a key is supplied.
+[FXMacroData](https://fxmacrodata.com/documentation/mcp-server) serves central-bank and statistics-agency data (policy rates, inflation, payrolls, GDP, bond yields and release calendars) over Streamable HTTP. USD tools work without an API key; on the keyless tier a new USD release becomes readable 15 minutes after it is published, and history covers the last 90 days. Other currencies return a `subscription_required` result until a key is supplied.
 
 The [example configuration](https://github.com/openclaw/mcporter/blob/main/examples/fxmacrodata/mcporter.json) registers an `fxmacrodata` server and disables editor imports. Passing it explicitly with `--config` keeps these commands separate from your project and user configuration.
 
@@ -33,7 +33,7 @@ node dist/cli.js --config examples/fxmacrodata/mcporter.json call fxmacrodata.re
   --args '{"currency":"usd","indicator":"non_farm_payrolls"}'
 ```
 
-`indicator_query` rows carry the reference period (`date`), the value (`val`) and publication timing for each print, newest first; follow `partial_page.next_call` for older pages. `release_calendar` returns `announcement_datetime` in UTC; pass `"timezone":"Europe/London"` (any IANA name) for an extra local timestamp. Use `list fxmacrodata --schema` for the accepted indicator slugs, and add `--output json` when processing results in a script.
+`indicator_query` rows carry the reference period (`date`), the value (`val`) and publication timing for each print, newest first; follow `partial_page.next_call` for older pages. Without a key only the last 90 days come back, so a monthly series such as inflation returns about three prints even with `"limit":12`. `release_calendar` returns `announcement_datetime` in UTC; pass `"timezone":"Europe/London"` (any IANA name) for an extra local timestamp. Use `list fxmacrodata --schema` for the accepted indicator slugs, and add `--output json` when processing results in a script.
 
 ## Use your own configuration
 
