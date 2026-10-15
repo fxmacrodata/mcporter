@@ -6,7 +6,7 @@ read_when:
 
 # FXMacroData macro data
 
-[FXMacroData](https://fxmacrodata.com/documentation/mcp-server?utm_source=github&utm_medium=referral&utm_campaign=mcporter&utm_content=docs) serves central-bank and statistics-agency data (policy rates, inflation, payrolls, GDP, bond yields and release calendars) over Streamable HTTP. USD tools work without an API key; on the keyless tier a new USD release becomes readable 15 minutes after it is published. Other currencies return a `subscription_required` result until a key is supplied.
+[FXMacroData](https://fxmacrodata.com/documentation/mcp-server) serves central-bank and statistics-agency data (policy rates, inflation, payrolls, GDP, bond yields and release calendars) over Streamable HTTP. USD tools work without an API key; on the keyless tier a new USD release becomes readable 15 minutes after it is published. Other currencies return a `subscription_required` result until a key is supplied.
 
 The [example configuration](https://github.com/openclaw/mcporter/blob/main/examples/fxmacrodata/mcporter.json) registers an `fxmacrodata` server and disables editor imports. Passing it explicitly with `--config` keeps these commands separate from your project and user configuration.
 
@@ -52,4 +52,4 @@ For other currencies, add an API key from an environment variable. mcporter reso
 }
 ```
 
-Keys are available from the [FXMacroData subscribe page](https://fxmacrodata.com/subscribe?utm_source=github&utm_medium=referral&utm_campaign=mcporter&utm_content=docs).
+Keys are available from the [FXMacroData subscribe page](https://fxmacrodata.com/subscribe).
